@@ -17,7 +17,7 @@ router.get('/', async (req, res, next) => {
           msg: "Failed retrieving all shows.",
           err: true
         })
-      }
+    }
 })
 
 // Retrieve show by id
