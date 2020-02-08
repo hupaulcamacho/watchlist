@@ -11,13 +11,19 @@ const getUserById = async (id) => {
     return users
 };
 
-const createNewUser = async (username, avatar_url) => {
-    const insertQuery = `INSERT INTO users (username, avatar_url) VALUES ($1, $2)`
-    await db.none(insertQuery, [username, avatar_url])
+const getUserByUsername = async (username) => {
+	const user = await db.oneOrNone("SELECT * FROM users WHERE username = $1", [username])
+	return user;
+}
+
+const createNewUser = async (user) => {
+    const insertQuery = `INSERT INTO users (username, avatar_url, password_digest) VALUES ($1, $2, $3)`
+    await db.none(insertQuery, [user.username, user.avatar_url, user.password])
 };
 
 module.exports = {
     getAllUsers,
     getUserById,
-    createNewUser
+    createNewUser,
+    getUserByUsername
 };
