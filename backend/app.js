@@ -5,7 +5,9 @@ const logger = require('morgan');
 const cors = require('cors')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/UserRouter');
-const genresRouter  = require('./routes/GenreRouter')
+const genresRouter  = require('./routes/GenreRouter');
+const showsRouter  = require('./routes/ShowRouter');
+const commentsRouter = require('./routes/CommentRouter')
 const app = express();
 
 app.use(logger('dev'));
@@ -23,5 +25,6 @@ app.use('/users', usersRouter);
 app.use('/genres', genresRouter)
 // shows router
 app.use('/shows', showsRouter)
-
+// comments router
+app.use('/comments', commentsRouter)
 module.exports = app;

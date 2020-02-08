@@ -10,8 +10,13 @@ const getShowById = async (id) => {
     return show;
 };
 
-const getShowsByGenreId = async (show_id, genre_id) => {
-    const shows = await db.any(`SELECT * FROM shows WHERE id=${show_id} AND genre_id=${genre_id};`);
+const getShowsByGenreId = async (genre_id) => {
+    const shows = await db.any(`SELECT * FROM shows WHERE genre_id=${genre_id};`);
+    return shows;
+};
+
+const getShowsByUserId = async (user_id) => {
+    const shows = await db.any(`SELECT * FROM shows WHERE user_id=${user_id};`);
     return shows;
 };
 
@@ -24,5 +29,6 @@ module.exports = {
     getAllShows,
     getShowById,
     createNewShow,
-
+    getShowsByGenreId,
+    getShowsByUserId
 }
