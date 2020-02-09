@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 class Profile extends Component {
     state = {
@@ -36,10 +36,12 @@ class Profile extends Component {
         const showComponents = []
         watchList.forEach(show => {
             showComponents.push(
+                <Link to={`/shows/${show.id}`}>
                 <div className='show'>
                     <p>{show.title}</p>
                     <img src={show.img_url} height='200' /><br/>
                 </div>
+                </Link>
             )
         })
         return (

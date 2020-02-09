@@ -2,17 +2,28 @@ import React, { Component } from 'react'
 import axios from 'axios'
 class ShowPage extends Component {
     state = {
+        user: this.props.user,
         show: {},
-        comments: []
+        comments: [],
+        comment_body: ''
     }
 
     componentDidMount = () => {
         this.getShow()
         this.getComments()
+        console.log(this.props.routeprops)
+    }
+
+    handleChange = (e) => {
+        e.preventDefault()
+        this.setState({
+            comment_body: e.target.value
+        })
     }
 
     getShow = async () => {
-        const { match: { params } } = this.props;
+        const { routeprops: { match:{ params } } } = this.props;
+        
         const URL = `http://localhost:3100/shows/${params.id}`
         try {
             let results = await axios.get(URL)
@@ -25,7 +36,7 @@ class ShowPage extends Component {
         }
     }
     getComments = async () => {
-        const { match: { params } } = this.props;
+        const { routeprops: { match:{ params } } } = this.props;
         const URL = `http://localhost:3100/comments/show/${params.id}`
         try {
             let results = await axios.get(URL)
@@ -37,16 +48,47 @@ class ShowPage extends Component {
         }
     }
 
-    makeNewComment = async () => {
+    makeNewComment = async (e) => {
+        e.preventDefault()
+        const { routeprops: { match:{ params } } } = this.props;
+        const { user } = this.state
         
+        const URL = `http://localhost:3100/comments/new/${user.id}/${params.id}`
+
+        try {
+            await axios.post(URL, { comment_body: this.state.comment_body })
+            this.setState({
+                comment_body: ''
+            })
+        } catch (err) {
+            console.log(err)
+        }
+        this.getComments()
     }
 
     render() {
-        const { show } = this.state
+        const { user, show, comment_body, comments } = this.state
+        const commentComponents = []
+        comments.forEach(comment => {
+            commentComponents.unshift(
+                <div>
+                    
+                    <img src={user.avatar_url} width='100' />
+                    <b>{user.username}: </b>
+                    {comment.comment_body}
+                </div>
+            )
+        })
         return (
-            <div>
-                <h3>{show.title}</h3>
+            <div className='main'>
+                <h2>{show.title}</h2>
                 <img src={show.img_url} height='200' />
+                <h4>Comments</h4>
+                <form onSubmit={this.makeNewComment}>
+                    <input type='text' value={comment_body} onChange={this.handleChange} placeholder='Make comment' />
+                    <input type='submit' value='submit' />
+                </form>
+                {commentComponents}
             </div>
         )
     }

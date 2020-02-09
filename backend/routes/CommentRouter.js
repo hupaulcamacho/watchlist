@@ -21,9 +21,9 @@ router.get('/show/:show_id', async (req, res, next) => {
     }
 });
 
-router.post('/', async (req, res, next) => {
+router.post('/new/:user_id/:show_id', async (req, res, next) => {
     try {
-        await commentQueries.addNewComment(req.body.comment_body, req.body.user_id, req.body.show_id);
+        await commentQueries.addNewComment(req.body.comment_body, req.params.user_id, req.params.show_id);
         res.json({
             message: 'Comment made.',
             err: false

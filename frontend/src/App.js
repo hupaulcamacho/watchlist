@@ -11,6 +11,7 @@ import AuthContainer from './Containers/AuthContainer'
 import PrivateRoute from './Components/PrivateRoute';
 import Profile from './Components/Profile'
 import ShowPage from './Components/ShowPage';
+import UserPage from './Components/UserPage';
 
 class App extends React.Component {
   state = {
@@ -64,12 +65,16 @@ class App extends React.Component {
     }
   }
 
-  renderProfile = () => {
-    return <Profile user={this.state.user} />
+  renderProfile = (routeprops) => {
+    return <Profile routeprops={routeprops} user={this.state.user} />
   }
 
-  renderShows = () => {
-    return <Shows user={this.state.user} />
+  renderShows = (routeprops) => {
+    return <Shows routeprops={routeprops} user={this.state.user} />
+  }
+
+  renderShowPage = (routeprops) => {
+    return <ShowPage routeprops={routeprops} user={this.state.user} />
   }
 
   render() {
@@ -81,9 +86,10 @@ class App extends React.Component {
         />
 
         <Switch>
-          <PrivateRoute path='/profile' component={() => {return this.renderProfile()}} isUserLoggedIn={this.state.isUserLoggedIn} />
-          <PrivateRoute path='/shows/:id' component={ShowPage} isUserLoggedIn={this.state.isUserLoggedIn}/>
-          <PrivateRoute path='/shows' component={() => {return this.renderShows()}} isUserLoggedIn={this.state.isUserLoggedIn} />
+          <PrivateRoute path='/profile' render={this.renderProfile} isUserLoggedIn={this.state.isUserLoggedIn} />
+          <PrivateRoute path='/shows/:id' render={this.renderShowPage} isUserLoggedIn={this.state.isUserLoggedIn}/>
+          <PrivateRoute path='/shows' render={this.renderShows} isUserLoggedIn={this.state.isUserLoggedIn} />
+          <Route path='/user/:id' component={UserPage} />
           <Route path='/users' component={Users} />
           <Route path='/login' render={this.renderAuthContainer} />
           <Route path='/signup' render={this.renderAuthContainer} />
