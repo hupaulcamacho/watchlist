@@ -10,11 +10,13 @@ import NavBar from './Components/NavBar';
 import AuthContainer from './Containers/AuthContainer'
 import PrivateRoute from './Components/PrivateRoute';
 import Profile from './Components/Profile'
+import ShowPage from './Components/ShowPage';
 
 class App extends React.Component {
   state = {
     user: null,
-    isUserLoggedIn: false
+    isUserLoggedIn: false,
+    loadingUser: true
   }
 
   componentDidMount() {
@@ -24,7 +26,8 @@ class App extends React.Component {
   setUser = (user) => {
     this.setState({
       user: user,
-      isUserLoggedIn: true
+      isUserLoggedIn: true,
+      loadingUser: false
     })
   }
 
@@ -33,7 +36,11 @@ class App extends React.Component {
       const { data } = axios.get("/auth/isUserLoggedIn")
       this.props.setUser(data.payload)
     } catch (err) {
-      
+      if (err.message.includes(401)) {
+        this.setState({
+          loadingUser: false
+        })
+      }
     }
     console.log('Checking if user logged in')
   }
@@ -46,12 +53,12 @@ class App extends React.Component {
   logoutUser = async () => {
     console.log('logging out user')
     try {
-      await axios.post('/auth/logout')
+      await axios.get('http://localhost:3100/auth/logout')
       this.setState({
         user: null,
         isUserLoggedIn: false
       })
-      this.props.history.push('/') // Redirect user to / (home)
+      this.props.history.push('/')
     } catch (err) {
       console.log('ERROR', err)
     }
@@ -59,6 +66,10 @@ class App extends React.Component {
 
   renderProfile = () => {
     return <Profile user={this.state.user} />
+  }
+
+  renderShows = () => {
+    return <Shows user={this.state.user} />
   }
 
   render() {
@@ -70,11 +81,12 @@ class App extends React.Component {
         />
 
         <Switch>
-          <PrivateRoute path='/profile' component={() => {return this.renderProfile()}} isUserLoggedIn={this.state.isUserLoggedIn}/>
-          <PrivateRoute path='/shows' component={Shows} isUserLoggedIn={this.state.isUserLoggedIn}/>
+          <PrivateRoute path='/profile' component={() => {return this.renderProfile()}} isUserLoggedIn={this.state.isUserLoggedIn} />
+          <PrivateRoute path='/shows/:id' component={ShowPage} isUserLoggedIn={this.state.isUserLoggedIn}/>
+          <PrivateRoute path='/shows' component={() => {return this.renderShows()}} isUserLoggedIn={this.state.isUserLoggedIn} />
           <Route path='/users' component={Users} />
-          <Route path='/login' render={this.renderAuthContainer}/>
-          <Route path='/signup' render={this.renderAuthContainer}/>
+          <Route path='/login' render={this.renderAuthContainer} />
+          <Route path='/signup' render={this.renderAuthContainer} />
           <Route path='/about' component={About} />
           <Route path='/' component={Home} />
         </Switch>

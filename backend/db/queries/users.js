@@ -19,11 +19,18 @@ const getUserByUsername = async (username) => {
 const createNewUser = async (user) => {
     const insertQuery = `INSERT INTO users (username, avatar_url, password_digest) VALUES ($1, $2, $3)`
     await db.none(insertQuery, [user.username, user.avatar_url, user.password])
+    return true
 };
+
+const getUserWatchList = async (id) => {
+    const watchList = await db.any(`SELECT * FROM user_watchlist JOIN shows ON user_watchlist.show_id=shows.id WHERE user_id=${id}`)
+    return watchList
+}
 
 module.exports = {
     getAllUsers,
     getUserById,
     createNewUser,
-    getUserByUsername
+    getUserByUsername,
+    getUserWatchList
 };

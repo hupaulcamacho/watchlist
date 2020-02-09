@@ -20,8 +20,13 @@ CREATE TABLE shows (
     id SERIAL PRIMARY KEY,
     title VARCHAR NOT NULL,
     img_url VARCHAR NOT NULL,
-    user_id INT REFERENCES users(id),
     genre_id INT REFERENCES genres(id)
+);
+
+CREATE TABLE user_watchlist (
+    id SERIAL PRIMARY KEY,
+    show_id INT REFERENCES shows(id),
+    user_id INT REFERENCES users(id)
 );
 
 CREATE TABLE comments (
@@ -32,42 +37,32 @@ CREATE TABLE comments (
 );
 
 -- INSERT GENRES
--- INSERT INTO genres (genre_name) VALUES ('Adventure'); -- 1
--- INSERT INTO genres (genre_name) VALUES ('Drama'); -- 2
--- INSERT INTO genres (genre_name) VALUES ('Comedy'); -- 3
--- INSERT INTO genres (genre_name) VALUES ('Fantasy'); -- 4
+INSERT INTO genres (genre_name) VALUES ('Adventure'); -- 1
+INSERT INTO genres (genre_name) VALUES ('Drama'); -- 2
+INSERT INTO genres (genre_name) VALUES ('Comedy'); -- 3
+INSERT INTO genres (genre_name) VALUES ('Fantasy'); -- 4
+INSERT INTO genres (genre_name) VALUES ('Horror'); -- 5
+INSERT INTO genres (genre_name) VALUES ('Sci-Fi'); -- 6
+INSERT INTO genres (genre_name) VALUES ('Romance'); -- 7
+INSERT INTO genres (genre_name) VALUES ('Anime'); -- 8
 
--- INSERT USERS
--- INSERT INTO users (username, avatar_url) VALUES ('Jon Snow', 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/kit-harington-hair-jon-snow-1569167827.jpg?crop=0.439xw:0.878xh;0.0221xw,0.0306xh&resize=480:*'); -- 1
--- INSERT INTO users (username, avatar_url) VALUES ('Daenerys Targaryen', 'https://hips.hearstapps.com/digitalspyuk.cdnds.net/17/36/1504608500-daenerys.jpg?crop=0.665xw:1.00xh;0.0950xw,0&resize=480:*'); -- 2
--- INSERT INTO users (username, avatar_url) VALUES ('Michael Scott', 'https://i1.sndcdn.com/avatars-000162505694-i81i0k-t500x500.jpg'); -- 3
--- INSERT INTO users (username, avatar_url) VALUES ('Pam Beesly', 'https://i1.sndcdn.com/avatars-000150274248-xnvnyn-t500x500.jpg'); -- 4
 
--- -- INSERT SHOWS
--- INSERT INTO shows (title, img_url, user_id, genre_id)
--- VALUES ('Game of Thrones', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg', 1, 4);
--- INSERT INTO shows (title, img_url, user_id, genre_id)
--- VALUES ('Game of Thrones', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg', 2, 4);
--- INSERT INTO shows (title, img_url, user_id, genre_id)
--- VALUES ('Game of Thrones', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg', 3, 4);
--- INSERT INTO shows (title, img_url, user_id, genre_id)
--- VALUES ('The Flash', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/jC1KqsFx8ZyqJyQa2Ohi7xgL7XC.jpg', 1, 1);
--- INSERT INTO shows (title, img_url, user_id, genre_id)
--- VALUES ('The Flash', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/jC1KqsFx8ZyqJyQa2Ohi7xgL7XC.jpg', 3, 1);
--- INSERT INTO shows (title, img_url, user_id, genre_id)
--- VALUES ('The Flash', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/jC1KqsFx8ZyqJyQa2Ohi7xgL7XC.jpg', 4, 1);
--- INSERT INTO shows (title, img_url, user_id, genre_id)
--- VALUES ('Naruto Shippūden', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/zAYRe2bJxpWTVrwwmBc00VFkAf4.jpg', 1, 4);
--- INSERT INTO shows (title, img_url, user_id, genre_id)
--- VALUES ('Naruto Shippūden', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/zAYRe2bJxpWTVrwwmBc00VFkAf4.jpg', 2, 4);
--- INSERT INTO shows (title, img_url, user_id, genre_id)
--- VALUES ('Greys Anatomy', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/eqgIOObafPJitt8JNh1LuO2fvqu.jpg', 3, 2);
--- INSERT INTO shows (title, img_url, user_id, genre_id)
--- VALUES ('Greys Anatomy', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/eqgIOObafPJitt8JNh1LuO2fvqu.jpg', 4, 2);
--- INSERT INTO shows (title, img_url, user_id, genre_id)
--- VALUES ('The Simpsons', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/yTZQkSsxUFJZJe67IenRM0AEklc.jpg', 1, 3);
--- INSERT INTO shows (title, img_url, user_id, genre_id)
--- VALUES ('The Simpsons', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/yTZQkSsxUFJZJe67IenRM0AEklc.jpg', 4, 3);
+-- INSERT SHOWS
+INSERT INTO shows (title, img_url, genre_id)
+VALUES ('Game of Thrones', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg', 1);
+
+INSERT INTO shows (title, img_url, genre_id)
+VALUES ('The Flash', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/jC1KqsFx8ZyqJyQa2Ohi7xgL7XC.jpg', 1);
+
+INSERT INTO shows (title, img_url, genre_id)
+VALUES ('Naruto Shippūden', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/zAYRe2bJxpWTVrwwmBc00VFkAf4.jpg', 8);
+
+INSERT INTO shows (title, img_url, genre_id)
+VALUES ('Greys Anatomy', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/eqgIOObafPJitt8JNh1LuO2fvqu.jpg', 2);
+
+INSERT INTO shows (title, img_url, genre_id)
+VALUES ('The Simpsons', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/yTZQkSsxUFJZJe67IenRM0AEklc.jpg', 3);
+
 
 -- INSERT COMMENTS
 -- INSERT INTO comments (comment_body, user_id, show_id)

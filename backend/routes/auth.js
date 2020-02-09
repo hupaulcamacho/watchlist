@@ -42,12 +42,20 @@ router.post("/login", passport.authenticate('local'), (req, res, next) => {
   })
 })
 
-router.post("/logout", authHelpers.loginRequired, (req, res, next) => {
+router.get("/logout", authHelpers.loginRequired, (req, res, next) => {
   console.log("log out")
   req.logout()
   res.json({
     payload: null,
     msg: "User logged out successfully",
+    err: false
+  })
+})
+
+router.get("/isUserLoggedIn", authHelpers.loginRequired, (req, res) => {
+  res.json({
+    payload: req.user,
+    msg: "User is logged in. Session active",
     err: false
   })
 })

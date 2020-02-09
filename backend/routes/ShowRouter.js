@@ -80,9 +80,10 @@ router.get('/user/:id', async (req, res, next) => {
   }
 });
 
+// Create new show
 router.post('/create', async (req, res, next) => {
     try {
-      await showQueries.createNewShow(req.body.title, req.body.img_url, req.body.user_id, req.body.genre_id);
+      await showQueries.createNewShow(req.body.title, req.body.img_url, req.body.genre_id);
       res.json({
         message: 'Show created.',
         err: false
@@ -95,5 +96,22 @@ router.post('/create', async (req, res, next) => {
       })
     }
 });
+
+// Add show to watchlist
+router.post('/watchlist/:show_id/:user_id', async (req, res, next) => {
+  try {
+    await showQueries.addShowToWatchlist(req.params.show_id, req.params.user_id)
+    res.json({
+      message: 'Show added to watchlist.',
+      err: false
+    })
+  } catch (err) {
+    res.status(500).json({
+      payload: null,
+      msg: "Failed adding show to watchlist.",
+      err: true
+    })
+  }
+})
 
 module.exports = router;
