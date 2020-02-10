@@ -24,7 +24,7 @@ class ShowPage extends Component {
     getShow = async () => {
         const { routeprops: { match:{ params } } } = this.props;
         
-        const URL = `http://localhost:3100/shows/${params.id}`
+        const URL = `/shows/${params.id}`
         try {
             let results = await axios.get(URL)
             console.log(results.data.payload)
@@ -37,7 +37,7 @@ class ShowPage extends Component {
     }
     getComments = async () => {
         const { routeprops: { match:{ params } } } = this.props;
-        const URL = `http://localhost:3100/comments/show/${params.id}`
+        const URL = `/comments/show/${params.id}`
         try {
             let results = await axios.get(URL)
             this.setState({
@@ -53,7 +53,7 @@ class ShowPage extends Component {
         const { routeprops: { match:{ params } } } = this.props;
         const { user } = this.state
         
-        const URL = `http://localhost:3100/comments/new/${user.id}/${params.id}`
+        const URL = `/comments/new/${user.id}/${params.id}`
 
         try {
             await axios.post(URL, { comment_body: this.state.comment_body })

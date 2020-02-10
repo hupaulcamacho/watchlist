@@ -13,7 +13,7 @@ class Profile extends Component {
 
     getUserWatchList = async () => {
         let { user } = this.props
-        let URL = `http://localhost:3100/users/watchlist/${user.id}`
+        let URL = `/users/watchlist/${user.id}`
         try {
             let results = await axios.get(URL)
             console.log(results.data.payload)
@@ -36,12 +36,13 @@ class Profile extends Component {
         const showComponents = []
         watchList.forEach(show => {
             showComponents.push(
-                <Link to={`/shows/${show.id}`}>
                 <div className='show'>
                     <p>{show.title}</p>
-                    <img src={show.img_url} height='200' /><br/>
+                    <Link to={`/shows/${show.id}`}>
+                        <img src={show.img_url} height='200' /><br/>
+                    </Link>
                 </div>
-                </Link>
+                
             )
         })
         return (

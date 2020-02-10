@@ -15,7 +15,7 @@ class UserPage extends Component {
 
     getUserWatchList = async () => {
         const { match:{ params } } = this.props;
-        let URL = `http://localhost:3100/users/watchlist/${params.id}`
+        let URL = `/users/watchlist/${params.id}`
         try {
             let results = await axios.get(URL)
             console.log(results.data.payload)
@@ -30,7 +30,7 @@ class UserPage extends Component {
     getUser = async () => {
         const { match:{ params } } = this.props;
         console.log(params.id)
-        let URL = `http://localhost:3100/users/${params.id}`
+        let URL = `/users/${params.id}`
         try {
             let results = await axios.get(URL)
             console.log(results.data.payload[0])

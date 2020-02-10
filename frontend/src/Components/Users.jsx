@@ -11,7 +11,7 @@ class Users extends Component {
     }
 
     getAllUsers = async () => {
-        const URL = 'http://localhost:3100/users'
+        const URL = '/users'
         try {
             let results = await axios.get(URL)
             console.log(results.data.payload)
