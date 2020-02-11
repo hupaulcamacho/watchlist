@@ -17,6 +17,7 @@ a {
   color: white;
   padding: 1em;
 }
+
 a:hover {
   background-color: rgb(103, 112, 196);
 }
@@ -29,13 +30,12 @@ a:hover {
   text-align: center
 }
 
-.show-container {
+.show-container, .user-container {
   margin-top: 1em;
   text-align: center;
   width: 55%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr; 
 } 
 
 .form-container {
@@ -64,9 +64,14 @@ h3, h2 {
   border-radius: 2em;
 }
 
-.user {
+.user-icon {
+  border-radius: 3em;
+}
+
+.user  {
   padding-top: 1em;
 }
+
 b {
   padding-right: 2em;
 }

@@ -28,18 +28,23 @@ class Users extends Component {
         const userComponents = []
         users.forEach(user => {
             userComponents.push(
-                <Link to={`/user/${user.id}`}>
+                
                     <div className='user'>
                         <p>{user.username}</p>
-                        <img src={user.avatar_url} width='200' />
+                        <Link to={`/user/${user.id}`}>
+                            <img className='user-icon' src={user.avatar_url} width='100' />
+                        </Link>
                     </div>
-                </Link>
+                
             )
         })
         return (
             <div className='main'>
                 <h1>Users</h1>
-                {userComponents}
+                <div className='user-container'>
+                    {userComponents}
+                </div>
+                
             </div>
         )
     }
