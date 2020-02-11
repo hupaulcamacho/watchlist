@@ -19,8 +19,8 @@ class Home extends Component {
                     ? <Redirect to='/login'/> 
                     : (
                         <div>
-                            <h1> TV Show WatchList </h1>
-                            <button onClick={this.redirectToLogin}> Log In </button>
+                            <h1> Welcome to WatchList! </h1>
+                            <button className='submit-button' onClick={this.redirectToLogin}> Log In </button>
                         </div>
                     )
                 }

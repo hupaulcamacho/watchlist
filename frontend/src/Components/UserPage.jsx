@@ -56,7 +56,7 @@ class UserPage extends Component {
             )
         })
         return (
-            <div>
+            <div className='main'>
                 <h1> {tempUser.username}'s WatchList </h1>
                     <div className='show-container'>
                         {showComponents}

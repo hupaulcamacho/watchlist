@@ -1,3 +1,72 @@
 .App {
   text-align: center;
 }
+p {
+  color: black;
+}
+
+nav {
+  background-color: rgb(54, 69, 199);
+  color: white;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 1em;
+}
+
+a {
+  color: white;
+  padding: 1em;
+}
+a:hover {
+  background-color: rgb(103, 112, 196);
+}
+
+.main {
+  padding-top:1em;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center
+}
+
+.show-container {
+  margin-top: 1em;
+  text-align: center;
+  width: 55%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr; 
+} 
+
+.form-container {
+  background-color:rgb(54, 69, 199);
+  color: white;
+  margin-top: 1em;
+  text-align: left;
+  padding: 2em;
+}  
+
+h3, h2 {
+  text-align: center;
+}
+
+.submit-button {
+  margin-top: 1em;
+  height: 2em;
+  width: 15em; 
+  font-size: 15px;
+  color: white;
+  background-color:rgb(93, 106, 223);
+  border-radius: 3px;
+}
+
+.watcher {
+  border-radius: 2em;
+}
+
+.user {
+  padding-top: 1em;
+}
+b {
+  padding-right: 2em;
+}

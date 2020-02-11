@@ -7,7 +7,7 @@ class Shows extends Component {
     state = {
         user: this.props.user,
         shows: [],
-        selectedGenre: '',
+        genre_id: '',
         title: '',
         img_url: '',
         genres: []
@@ -59,9 +59,10 @@ class Shows extends Component {
     }
 
     handleOptionChange = (e) => {
+        console.log(e.target.option)
         console.log(e.target.value)
         this.setState({
-            selectedGenre: e.target.value
+            genre_id: e.target.value
         })
     }
 
@@ -71,40 +72,38 @@ class Shows extends Component {
         })
     }
 
-    addNewShow = async () => {
-        const { title, img_url } = this.state
+    addNewShow = async (e) => {
+        e.preventDefault()
+        const { title, img_url, genre_id } = this.state
         const URL = `/shows/create`
         try {
-            // let results = await axios.post(URL, {title, img_url, genre_id})
-            // console.log(results.data.payload)
-         } catch(err) {
-             console.log(err)
-         }
+            let results = await axios.post(URL, {title, img_url, genre_id})
+            console.log(results.data.payload)
+        } catch(err) {
+            console.log(err)
+        }
+        this.getAllShows()
     }
 
     render() {
-        const { shows, genres, title, img_url} = this.state 
+        const { shows, genres, title, img_url, genre_id} = this.state 
         const showComponents = []
         shows.forEach(show => {
             showComponents.push(
-                <>
-                
                 <div className='show' id={show.id}>
                     <p>{show.title}</p>
                     Genre: {show.genre_name}<br/>
                     <Link to={`/shows/${show.id}`}>
                         <img src={show.img_url} height='200' /><br/>
                     </Link>
+                    <button className='submit-button' id={show.id} onClick={this.addToWatchlist}>Add to WatchList</button>
                 </div>
-                
-                <button id={show.id} onClick={this.addToWatchlist}>Add to WatchList</button>
-                </>
             )
         })
         const genreOptions = []
         genres.forEach(genre => {
             genreOptions.push(
-                <option value={genre.genre_name}>{genre.genre_name}</option>
+                <option value={genre.id}>{genre.genre_name}</option>
             )
         })
         return (
@@ -123,10 +122,14 @@ class Shows extends Component {
                                 <option value='Select Genre'>Select Genre</option>
                                 {genreOptions}
                             </select><br/>
-                            <input type='submit' value='submit' />
+                            <input type='submit' value='submit' className='submit-button' />
                         </form>
                     </div>
-                    {showComponents}
+                    <div className='show-container'>
+                        {showComponents}
+                    </div>
+
+                    
                 </div>
             </div>
         )

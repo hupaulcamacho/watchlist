@@ -81,6 +81,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <NavBar 
+        user={this.state.user}
         logoutUser={this.logoutUser}
         isUserLoggedIn={this.state.isUserLoggedIn}
         />
@@ -89,8 +90,9 @@ class App extends React.Component {
           <PrivateRoute path='/profile' render={this.renderProfile} isUserLoggedIn={this.state.isUserLoggedIn} />
           <PrivateRoute path='/shows/:id' render={this.renderShowPage} isUserLoggedIn={this.state.isUserLoggedIn}/>
           <PrivateRoute path='/shows' render={this.renderShows} isUserLoggedIn={this.state.isUserLoggedIn} />
-          <Route path='/user/:id' component={UserPage} />
+          
           <Route path='/users' component={Users} />
+          <Route path='/user/:id' component={UserPage} />
           <Route path='/login' render={this.renderAuthContainer} />
           <Route path='/signup' render={this.renderAuthContainer} />
           <Route path='/about' component={About} />

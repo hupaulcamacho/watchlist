@@ -2,9 +2,10 @@ const db = require('../db')
 
 
 const getAllShows = async () => {
-    const shows = await db.any("SELECT * FROM shows JOIN genres ON shows.genre_id=genres.id;");
+    const shows = await db.any("SELECT shows.id, shows.title, shows.img_url, shows.genre_id, genres.genre_name FROM shows JOIN genres ON shows.genre_id=genres.id;");
     return shows;
 };
+
 
 const getShowById = async (id) => {
     const show = await db.any(`SELECT * FROM shows WHERE id=${id};`);
@@ -21,9 +22,9 @@ const getShowsByGenreId = async (genre_id) => {
     return shows;
 };
 
-const createNewShow = async (title, img_url, user_id, genre_id) => {
-    const insertQuery = `INSERT INTO shows (title, img_url, user_id, genre_id) VALUES ($1, $2, $3, $4)`
-    await db.none(insertQuery, [title, img_url, user_id, genre_id])
+const createNewShow = async (title, img_url, genre_id) => {
+    const insertQuery = `INSERT INTO shows (title, img_url, genre_id) VALUES ($1, $2, $3)`
+    await db.none(insertQuery, [title, img_url, genre_id])
 };
 
 const addShowToWatchlist = async (show_id, user_id) => {
@@ -34,10 +35,24 @@ const addShowToWatchlist = async (show_id, user_id) => {
     } 
 }
 
+const getWatchers = async (show_id) => {
+    const query = `SELECT * FROM users JOIN user_watchlist ON users.id=user_watchlist.user_id WHERE show_id=$1;`
+    const watchers = await db.any(query, [show_id])
+    return watchers
+}
+
+const getWatchList = async () => {
+    const watchList = await db.any(`SELECT * FROM user_watchlist;`)
+    return watchList
+}
+
+
 module.exports = {
     getAllShows,
     getShowById,
     createNewShow,
     getShowsByGenreId,
-    addShowToWatchlist
+    addShowToWatchlist,
+    getWatchers,
+    getWatchList
 }

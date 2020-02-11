@@ -13,24 +13,24 @@ const LoginForm = ({
   }
 
   return (
-    <div>
+    <div className='form-container'>
       <h2> Log-In </h2>
       <form onSubmit={handleSubmit}>
-        <input
+        Username: <input
           type="text"
           name="username"
           value={username}
           placeholder="username"
           onChange={handleChange}
         /><br/>
-        <input
+        Password: <input
           type="password"
           name="password"
           value={password}
-          placeholder="***"
+          placeholder="password"
           onChange={handleChange}
         /><br/>
-        <input type="submit" value="log-in" />
+        <input className='submit-button' type="submit" value="log-in" />
       </form>
     </div>
   )

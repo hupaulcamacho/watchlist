@@ -51,13 +51,13 @@ class Profile extends Component {
                     addShowClicked 
                     ? <Redirect to='/shows'/> 
                     : (
-                        <div>
+                        <>
                             <h1> {user.username}'s WatchList </h1>
-                            <button onClick={this.redirectToShows}> Add Shows to Watchlist </button>
+                            <button className='submit-button' onClick={this.redirectToShows}> Add Shows to Watchlist </button>
                             <div className='show-container'>
                                 {showComponents}
                             </div>
-                        </div>
+                        </>
                     )
                 } 
             </div>

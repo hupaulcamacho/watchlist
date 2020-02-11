@@ -68,7 +68,7 @@ class AuthContainer extends Component {
     render() {
         const { isUserLoggedIn } = this.props
         return (
-            <div>  
+            <div className='main'>  
                 {
                     isUserLoggedIn
                     ? <Redirect to="/profile" />

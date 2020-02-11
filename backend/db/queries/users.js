@@ -7,7 +7,7 @@ const getAllUsers = async () => {
 
 const getUserById = async (id) => {
     console.log(id)
-    const users = await db.any(`SELECT * FROM users WHERE id=${id}`)
+    const users = await db.any(`SELECT username, avatar_url, id FROM users WHERE id=${id}`)
     return users
 };
 
