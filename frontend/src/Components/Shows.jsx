@@ -90,14 +90,14 @@ class Shows extends Component {
         const showComponents = []
         shows.forEach(show => {
             showComponents.push(
+                <Link to={`/shows/${show.id}`}>
                 <div className='show' id={show.id}>
-                    <p>{show.title}</p>
-                    Genre: {show.genre_name}<br/>
-                    <Link to={`/shows/${show.id}`}>
-                        <img src={show.img_url} height='200' /><br/>
-                    </Link>
+                        <p>{show.title}</p>
+                        Genre: {show.genre_name}<br/>
+                        <img src={show.img_url} height='200' /><br/> 
                     <button className='submit-button' id={show.id} onClick={this.addToWatchlist}>Add to WatchList</button>
                 </div>
+                </Link>
             )
         })
         const genreOptions = []

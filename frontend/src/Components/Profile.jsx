@@ -36,13 +36,12 @@ class Profile extends Component {
         const showComponents = []
         watchList.forEach(show => {
             showComponents.push(
+                <Link to={`/shows/${show.id}`}>
                 <div className='show'>
                     <p>{show.title}</p>
-                    <Link to={`/shows/${show.id}`}>
-                        <img src={show.img_url} height='200' /><br/>
-                    </Link>
+                    <img src={show.img_url} height='200' /><br/>
                 </div>
-                
+                </Link>
             )
         })
         return (
