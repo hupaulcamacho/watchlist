@@ -92,8 +92,8 @@ class Shows extends Component {
             showComponents.push(
                 <Link to={`/shows/${show.id}`}>
                 <div className='show' id={show.id}>
-                        <p>{show.title}</p>
-                        Genre: {show.genre_name}<br/>
+                        <h4>{show.title}</h4>
+                        <p>Genre: {show.genre_name}</p><br/>
                         <img src={show.img_url} height='200' /><br/> 
                     <button className='submit-button' id={show.id} onClick={this.addToWatchlist}>Add to WatchList</button>
                 </div>
@@ -113,15 +113,29 @@ class Shows extends Component {
                     <div className='form-container'>
                         <h3> Add New Show </h3>
                         <form onSubmit={this.addNewShow}>
-                            Title:
-                            <input name='title' type='text' value={title} onChange={this.handleChange} /><br/>
-                            Show Image Url:
-                            <input name='img_url'type='text' value={img_url} onChange={this.handleChange} /><br/>
-                            Genre:
+                            <i class="fas fa-align-justify"></i> {" "}
+                            <input 
+                                className='addshow-input'
+                                name='title' 
+                                type='text' 
+                                value={title} 
+                                onChange={this.handleChange}
+                                placeholder="Title"
+                            /><br/>
+                            <i class="fas fa-image"></i> {" "}
+                            <input 
+                                className='addshow-input'
+                                name='img_url'
+                                type='text' 
+                                value={img_url} 
+                                onChange={this.handleChange}
+                                placeholder="Show Image Url"
+                            /><br/>
                             <select onChange={this.handleOptionChange}>
                                 <option value='Select Genre'>Select Genre</option>
                                 {genreOptions}
                             </select><br/>
+
                             <input type='submit' value='submit' className='submit-button' />
                         </form>
                     </div>

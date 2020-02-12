@@ -1,7 +1,7 @@
 const db = require('../db');
 
 const getCommentsByShowId = async (id) => {
-    const shows = await db.any(`SELECT * FROM comments WHERE show_id=${id}`)
+    const shows = await db.any(`SELECT * FROM comments JOIN users ON comments.user_id=users.id WHERE show_id=${id};`)
     return shows
 }
 

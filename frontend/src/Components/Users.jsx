@@ -30,7 +30,7 @@ class Users extends Component {
             userComponents.push(
                     <Link to={`/user/${user.id}`}>
                     <div className='user'>
-                        <p>{user.username}</p>
+                        <h4>{user.username}</h4>
                         <img className='user-icon' src={user.avatar_url} width='100' />
                     </div>
                     </Link>

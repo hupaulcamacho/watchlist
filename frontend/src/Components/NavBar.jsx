@@ -6,19 +6,19 @@ const NavBar = ({ logoutUser, isUserLoggedIn, user }) => {
         return (
           <div>
           <nav>
-            <b>WatchList</b>
+            <b className='title'>WatchList</b>
             <Link to='/shows'>Shows</Link>{" "}
             <Link to='/users'>Users</Link>{" "}
             <Link to='/profile'>Profile</Link>{" "}
             <Link to='/about'>About</Link>
-            <button onClick={logoutUser}>Log-out</button>
+            <button className='logout-button' onClick={logoutUser}>Log Out</button>
           </nav>
+          <Link to='/profile'>
           <div className="user">
-            <Link to='/profile'>
-              <img src={user.avatar_url} height='50'/>
-            </Link>
-            {user.username}
+            <img className='user-icon'src={user.avatar_url} height='50'/> <br/>
+            <b className="username">{user.username}</b>
           </div>
+          </Link>
             
           </div>
         )
@@ -26,7 +26,7 @@ const NavBar = ({ logoutUser, isUserLoggedIn, user }) => {
     
     return (
         <nav>
-          <b>WatchList</b>
+          <b className='title'>WatchList</b>
           <Link to="/" >Home</Link>{" "}
           <Link to="/login" >Log-In</Link>{" "}
           <Link to="/signup" >Sign-Up</Link>{" "}

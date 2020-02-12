@@ -4,6 +4,9 @@
 p {
   color: black;
 }
+.username {
+  color: black;
+}
 
 nav {
   background-color: rgb(54, 69, 199);
@@ -12,13 +15,25 @@ nav {
   padding-bottom: 1em;
   padding-left: 1em;
 }
+.login-input, .addshow-input, .signup-input{
+  margin-bottom: 1em;
+  width: 20em;
+  height: 2em;
+}
 
 a {
   color: white;
   padding: 1em;
 }
 
-a:hover {
+.user:hover {
+  background-color: rgb(103, 112, 196);
+}
+.show {
+  padding: 1em;
+}
+
+.show:hover {
   background-color: rgb(103, 112, 196);
 }
 
@@ -38,13 +53,33 @@ a:hover {
   grid-template-columns: 1fr 1fr;
 } 
 
+.comment-container {
+  text-align: left
+}
+
+.watcher-container {
+  display: flex;
+
+}
+
 .form-container {
   background-color:rgb(54, 69, 199);
   color: white;
   margin-top: 1em;
+  text-align: center;
+  padding: 2em;
+  border-radius: 2em;
+}  
+
+.comment {
+  margin-top: 1em;
   text-align: left;
   padding: 2em;
-}  
+} 
+
+h4 {
+  color: black;
+}
 
 h3, h2 {
   text-align: center;
@@ -53,11 +88,24 @@ h3, h2 {
 .submit-button {
   margin-top: 1em;
   height: 2em;
-  width: 15em; 
+  width: 17em; 
   font-size: 15px;
   color: white;
   background-color:rgb(93, 106, 223);
   border-radius: 3px;
+}
+
+.logout-button {
+  height: 2em;
+  width: 10em; 
+  font-size: 13px;
+  color: white;
+  background-color:rgb(93, 106, 223);
+  border-radius: 3px;
+}
+
+.logout-button:hover {
+  background-color: rgb(54, 69, 199);
 }
 
 .watcher {
@@ -72,6 +120,6 @@ h3, h2 {
   padding-top: 1em;
 }
 
-b {
+.title {
   padding-right: 2em;
 }

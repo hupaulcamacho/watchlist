@@ -86,17 +86,17 @@ class ShowPage extends Component {
         
         comments.forEach(comment => {
             commentComponents.unshift(
-                <div>
-                    <img src={user.avatar_url} width='100' />
-                    <b>{user.username}: </b>
-                    {comment.comment_body}
+                <div className='comment'>
+                    <img className='watcher' src={comment.avatar_url} width='50' />
+                    <b>{comment.username}</b> <br/>
+                    <p>{comment.comment_body}</p>
                 </div>
             )
         })
         const watcherComponents = []
         watchers.forEach(watcher => {
             watcherComponents.push(
-                <Link to={`/user/${user.id}`}>
+                <Link to={`/user/${watcher.user_id}`}>
                     <img className='watcher' src={watcher.avatar_url} width='50'/>
                 </Link>
             )
@@ -106,13 +106,19 @@ class ShowPage extends Component {
                 <h2>{show.title}</h2>
                 <img src={show.img_url} height='200' />
                 <h4>Currently Watching</h4>
-                {watcherComponents}
+                <div className='watcher-container'>
+                    {watcherComponents}
+                </div>
+                
                 <h4>Comments</h4>
                 <form onSubmit={this.makeNewComment}>
                     <input type='text' value={comment_body} onChange={this.handleChange} placeholder='Make comment' />
                     <input type='submit' value='submit' />
                 </form>
-                {commentComponents}
+                <div className='comment-container'>
+                    {commentComponents}
+                </div>
+                
             </div>
         )
     }

@@ -48,21 +48,29 @@ INSERT INTO genres (genre_name) VALUES ('Anime'); -- 8
 
 
 -- INSERT SHOWS
-INSERT INTO shows (title, img_url, genre_id)
+INSERT INTO shows (title, img_url, genre_id) -- 1
 VALUES ('Game of Thrones', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg', 1);
 
-INSERT INTO shows (title, img_url, genre_id)
+INSERT INTO shows (title, img_url, genre_id) -- 2
 VALUES ('The Flash', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/jC1KqsFx8ZyqJyQa2Ohi7xgL7XC.jpg', 1);
 
-INSERT INTO shows (title, img_url, genre_id)
+INSERT INTO shows (title, img_url, genre_id) -- 3
+VALUES ('Dragon Ball Super', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/rs2d7K7yPiieuNvDltxbJpTJgQX.jpg', 8);
+
+INSERT INTO shows (title, img_url, genre_id) -- 4
 VALUES ('Naruto Shippūden', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/zAYRe2bJxpWTVrwwmBc00VFkAf4.jpg', 8);
 
-INSERT INTO shows (title, img_url, genre_id)
+INSERT INTO shows (title, img_url, genre_id) -- 5
 VALUES ('Greys Anatomy', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/eqgIOObafPJitt8JNh1LuO2fvqu.jpg', 2);
 
-INSERT INTO shows (title, img_url, genre_id)
+INSERT INTO shows (title, img_url, genre_id) -- 6
 VALUES ('The Simpsons', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/yTZQkSsxUFJZJe67IenRM0AEklc.jpg', 3);
 
+INSERT INTO shows (title, img_url, genre_id) -- 7
+VALUES ('Demon Slayer: Kimetsu no Yaiba', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/wrCVHdkBlBWdJUZPvnJWcBRuhSY.jpg', 8);
+
+INSERT INTO shows (title, img_url, genre_id) -- 8
+VALUES ('grown-ish', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/qW09EwhLgMdhaIS7w6mnHP2pbK5.jpg', 3);
 
 -- INSERT COMMENTS
 -- INSERT INTO comments (comment_body, user_id, show_id)
