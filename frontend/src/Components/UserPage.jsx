@@ -58,6 +58,7 @@ class UserPage extends Component {
         return (
             <div className='main'>
                 <h1> {tempUser.username}'s WatchList </h1>
+                <img className='user-icon-large'src={tempUser.avatar_url} height='200' /><br/>
                     <div className='show-container'>
                         {showComponents}
                     </div>
