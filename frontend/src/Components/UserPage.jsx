@@ -49,8 +49,10 @@ class UserPage extends Component {
             showComponents.push(
                 <Link to={`/shows/${show.id}`}>
                 <div className='show'>
-                    <p>{show.title}</p>
-                    <img src={show.img_url} height='200' /><br/>
+                    <div className='show-info'>
+                        <p>{show.title}</p>
+                    </div>
+                    <img className='show-img' src={show.img_url} height='200' /><br/>
                 </div>
                 </Link>
             )

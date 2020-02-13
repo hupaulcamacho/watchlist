@@ -15,7 +15,7 @@ const users = [
     },
     {
         // -- 3
-        username: 'bpmauge',
+        username: 'prncessbri94',
         password: '1123',
         avatar_url: 'https://pbs.twimg.com/profile_images/1210460636305657856/kMcYsdea_400x400.jpg'
     },

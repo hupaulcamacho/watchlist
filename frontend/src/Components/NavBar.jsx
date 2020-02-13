@@ -14,7 +14,7 @@ const NavBar = ({ logoutUser, isUserLoggedIn, user }) => {
             <button className='logout-button' onClick={logoutUser}>Log Out</button>
           </nav>
           <Link to='/profile'>
-          <div className="user">
+          <div className="main-user">
             <img className='user-icon'src={user.avatar_url} height='50'/> <br/>
             <b className="username">{user.username}</b>
           </div>

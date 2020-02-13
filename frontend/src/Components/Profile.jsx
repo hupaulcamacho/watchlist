@@ -38,8 +38,11 @@ class Profile extends Component {
             showComponents.push(
                 <Link to={`/shows/${show.id}`}>
                 <div className='show'>
-                    <h4>{show.title}</h4>
-                    <img src={show.img_url} height='200' /><br/>
+                    <div className='show-info'>
+                        <h4>{show.title}</h4>
+                    </div>
+                    
+                    <img className='show-img' src={show.img_url} height='200' /><br/>
                 </div>
                 </Link>
             )

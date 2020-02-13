@@ -87,9 +87,9 @@ class ShowPage extends Component {
         comments.forEach(comment => {
             commentComponents.unshift(
                 <div className='comment'>
-                    <img className='watcher' src={comment.avatar_url} width='50' />
+                    <img className='user-icon' src={comment.avatar_url} width='50' />
                     <b>{comment.username}</b> <br/>
-                    <p>{comment.comment_body}</p>
+                    <p className='comment-body'>{comment.comment_body}</p>
                 </div>
             )
         })
@@ -104,7 +104,7 @@ class ShowPage extends Component {
         return (
             <div className='main'>
                 <h2>{show.title}</h2>
-                <img src={show.img_url} height='200' />
+                <img className='show-img' src={show.img_url} height='200' />
                 <h4>Currently Watching</h4>
                 <div className='watcher-container'>
                     {watcherComponents}
@@ -112,8 +112,8 @@ class ShowPage extends Component {
                 
                 <h4>Comments</h4>
                 <form onSubmit={this.makeNewComment}>
-                    <input type='text' value={comment_body} onChange={this.handleChange} placeholder='Make comment' />
-                    <input type='submit' value='submit' />
+                    <input className='comment-input' type='text' value={comment_body} onChange={this.handleChange} placeholder='Make comment' />
+                    <input className='comment-button' type='submit' value='submit' />
                 </form>
                 <div className='comment-container'>
                     {commentComponents}

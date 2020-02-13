@@ -69,6 +69,7 @@ class AuthContainer extends Component {
         const { isUserLoggedIn } = this.props
         return (
             <div className='main'>  
+            <img className='login-img' src='http://www.kolumnmagazine.com/wp-content/uploads/2017/11/African-American_Family__05b.jpg' width='400'/>
                 {
                     isUserLoggedIn
                     ? <Redirect to="/profile" />

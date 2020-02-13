@@ -1,12 +1,19 @@
 .App {
   text-align: center;
+  
 }
-p {
+body {
+  background-color: rgb(238, 239, 255);
+}
+
+/* p {
   color: black;
-}
-.username {
+} */
+
+/* h4 {
   color: black;
-}
+} */
+
 
 nav {
   background-color: rgb(54, 69, 199);
@@ -16,7 +23,7 @@ nav {
   padding-left: 1em;
 }
 
-.login-input, .addshow-input, .signup-input{
+.login-input, .addshow-input, .signup-input, .comment-input{
   margin-bottom: 1em;
   width: 20em;
   height: 2em;
@@ -26,14 +33,43 @@ a {
   color: white;
   padding: 1em;
 }
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+/* a:hover {
+  text-decoration: underline;
+} */
+
+a:active {
+  text-decoration: underline;
+}
 
 .user:hover {
   background-color: rgb(103, 112, 196);
 }
-.show {
-  padding: 1em;
+.main-user:hover {
+  background-color: rgb(103, 112, 196);
 }
 
+.show, .user, .comment {
+  padding: 1em;
+  border-radius: 1em;
+  background-color: rgb(54, 69, 199);
+  color: white;
+}
+.main-user {
+  padding: 1em;
+  margin: auto;
+  border-radius: 1em;
+  background-color: rgb(54, 69, 199);
+  color: white;
+  width: 50%;
+}
 .show:hover {
   background-color: rgb(103, 112, 196);
 }
@@ -46,12 +82,21 @@ a {
   text-align: center
 }
 
-.show-container, .user-container {
+
+.show-container {
+  margin-top: 1em;
+  text-align: center;
+  /* width: 55%; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+} 
+
+.user-container {
   margin-top: 1em;
   text-align: center;
   width: 55%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 } 
 
 .comment-container {
@@ -78,9 +123,7 @@ a {
   padding: 2em;
 } 
 
-h4 {
-  color: black;
-}
+
 
 h3, h2 {
   text-align: center;
@@ -96,7 +139,7 @@ h3, h2 {
   border-radius: 3px;
 }
 
-.logout-button {
+.logout-button, .comment-button {
   height: 2em;
   width: 10em; 
   font-size: 13px;
@@ -115,10 +158,25 @@ h3, h2 {
 
 .user-icon {
   border-radius: 3em;
+  border: 2px solid white;
 }
 
 .user-icon-large {
   border-radius: 6em;
+}
+.comment-body, .show-info {
+  border: 2px solid rgb(93, 106, 223);
+  margin: 0.5em;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+.login-img, .home-img, .show-img {
+  border-radius: 2em;
+}
+
+.show-img {
+  border-radius: 1em;
+  border: 2px solid white;
 }
 
 .user  {

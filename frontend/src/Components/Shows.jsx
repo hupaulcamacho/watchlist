@@ -79,6 +79,11 @@ class Shows extends Component {
         try {
             let results = await axios.post(URL, {title, img_url, genre_id})
             console.log(results.data.payload)
+            this.setState({
+                genre_id: '',
+                title: '',
+                img_url: ''
+            })
         } catch(err) {
             console.log(err)
         }
@@ -92,9 +97,12 @@ class Shows extends Component {
             showComponents.push(
                 <Link to={`/shows/${show.id}`}>
                 <div className='show' id={show.id}>
+                    <div className='show-info'>
                         <h4>{show.title}</h4>
                         <p>Genre: {show.genre_name}</p><br/>
-                        <img src={show.img_url} height='200' /><br/> 
+                    </div>
+                        
+                        <img className='show-img' src={show.img_url} height='200' /><br/> 
                     <button className='submit-button' id={show.id} onClick={this.addToWatchlist}>Add to WatchList</button>
                 </div>
                 </Link>
@@ -107,7 +115,6 @@ class Shows extends Component {
             )
         })
         return (
-            <div>
                 <div className='main'>
                     <h1> Shows </h1>
                     <div className='form-container'>
@@ -142,10 +149,7 @@ class Shows extends Component {
                     <div className='show-container'>
                         {showComponents}
                     </div>
-
-                    
                 </div>
-            </div>
         )
     }
 }

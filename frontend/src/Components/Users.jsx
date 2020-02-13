@@ -43,7 +43,6 @@ class Users extends Component {
                 <div className='user-container'>
                     {userComponents}
                 </div>
-                
             </div>
         )
     }
