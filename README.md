@@ -13,4 +13,4 @@ Watchlist is a full-stack application where users can post, comment on, and favo
 Run seedDatabase.js in the front-end folder to seed the database (must have server running)
 
 ## Preview
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Alt Text](./watchlist.gif)
